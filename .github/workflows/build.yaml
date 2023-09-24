@@ -11,10 +11,10 @@ jobs:
       fail-fast: false
       matrix:
         version: [22.03.2]
-        target: [ipq40xx/generic, mediatek/mt7622, ramips/mt7620, ramips/mt7621, ramips/mt76x8, x86/64]
+        target: [x86/64]
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: ./openwrt-${{ matrix.version }}-fullcone.sh ${{ matrix.target }}
       - id: rename-target
         run: echo "name=${{ matrix.target }}" | tr / _ >> $GITHUB_OUTPUT
